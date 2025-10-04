@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zon Medical Devices - Innovative Medical Solutions</title>
+    <meta name="description"
+        content="Zon Medical Devices provides innovative medical solutions including interventional catheters, stents, and OEM components with global reach.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <style>
+        :root {
+            --accent: #e91e63;
+            --dark: #1a202c;
+            --light: #f8fafc;
+            --gray: #718096;
+            --orange: #FFA500;
+            --orange-dark: #e69500;
+            --orange-light: #FFF5F0;
+            --medical-blue: #2A7DE1;
+            --medical-teal: #00A896;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles - Fixed */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+
+        header.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            display: none;
+            /* Hide logo images */
+        }
+
+        .header-logo {
+            height: 35px;
+            margin-right: 10px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .header-logo {
+            display: block;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        header.scrolled .logo {
+            color: var(--orange);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header.scrolled .nav-menu a {
+            color: var(--dark);
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-actions button {
+            background: none;
+            border: none;
+            color: white;
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        header.scrolled .nav-actions button {
+            color: var(--dark);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        header.scrolled .hamburger span {
+            background-color: var(--dark);
+        }
+
+        /* Section Title Styles - Added for consistent styling */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: block;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange);
+        }
+
+        /* Hero Carousel - Updated with Zoom Effect */
+        .hero {
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease, transform 8s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(1.1);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .slide-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .slide.active .slide-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease 0.3s;
+        }
+
+        .slide.active .slide-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--orange);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease 0.6s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .slide.active .btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            color: var(--dark);
+        }
+
+        .arrow:hover {
+            background-color: var(--orange);
+            color: white;
+        }
+
+        .arrow-left {
+            left: 30px;
+        }
+
+        .arrow-right {
+            right: 30px;
+        }
+
+        /* Products Title Section */
+        .products-title-section {
+            padding: 60px 0 30px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .products-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .products-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange);
+        }
+
+        .products-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Domain Blocks Section */
+        .domains-section {
+            padding: 40px 0 60px;
+            background-color: var(--light);
+        }
+
+        .domains-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .domain-block {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .domain-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .domain-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .domain-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .domain-block:hover .domain-image img {
+            transform: scale(1.05);
+        }
+
+        .domain-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .domain-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .domain-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .domain-link {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .domain-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .domain-link:hover {
+            color: var(--orange-dark);
+        }
+
+        .domain-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* What We Do - Updated */
+        .features {
+            background-color: white;
+            padding: 50px 0 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--orange-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .feature-icon i {
+            font-size: 30px;
+            color: var(--orange);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+
+        .feature-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* CLTI Treatment Section - Replaces Impact Section */
+        .clti-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .clti-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .clti-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .clti-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .clti-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .clti-subtitle {
+            font-size: 0.9rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .clti-title {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .clti-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange);
+        }
+
+        .clti-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .clti-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .clti-btn {
+            display: inline-block;
+            background-color: var(--orange);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: fit-content;
+        }
+
+        .clti-btn:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+        }
+
+        /* Vision Section - Restored Original Design */
+        .vision-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .vision-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vision-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .vision-highlight {
+            display: inline-block;
+            background-color: var(--orange-light);
+            color: var(--orange);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a202c;
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-map {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-map:hover {
+            transform: scale(1.02);
+        }
+
+        .footer-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-block {
+            margin-bottom: 25px;
+        }
+
+        .contact-block h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--orange);
+        }
+
+        /* Interactive Contact Links */
+        .contact-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--orange);
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .chatbot-button:hover {
+            background-color: var(--orange-dark);
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 90px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background-color: var(--orange);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .chatbot-input input {
+            flex-grow: 1;
+            border: none;
+            padding: 15px;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background-color: var(--orange-light);
+            color: var(--dark);
+            margin-left: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .domains-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .clti-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background-color: white;
+                width: 100%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .arrow-left {
+                left: 15px;
+            }
+
+            .arrow-right {
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .domains-container {
+                grid-template-columns: 1fr;
+            }
+
+            .clti-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .clti-title {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .slide-title {
+                font-size: 1.8rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+            .clti-btn {
+                padding: 10px 20px;
+            }
+
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .chatbot-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .chatbot-window {
+                width: 300px;
+                right: -20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <!-- Logo image that appears when scrolled -->
+                <img src="/static/image.png" alt="Zon Medical Devices Logo" class="header-logo">
+                <a href="#" class="logo">Zon Medical Devices</a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('main') }}">Main</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{  url_for('contact')}}">Contact</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Carousel -->
+    <section class="hero">
+        <div class="slide active"
+            style="background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Innovative Medical Solutions</h2>
+                <p class="slide-subtitle">Transforming patient care through cutting-edge technology and precision
+                    engineering</p>
+                <a href="#about" class="btn">Learn More</a>
+            </div>
+        </div>
+
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Global Healthcare Partner</h2>
+                <p class="slide-subtitle">Serving medical professionals worldwide with quality devices and OEM solutions
+                </p>
+                <a href="#impact" class="btn">Our Impact</a>
+            </div>
+        </div>
+
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Advanced Manufacturing</h2>
+                <p class="slide-subtitle">Precision engineering for better patient outcomes and healthcare innovation
+                </p>
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="arrow arrow-left" aria-label="Previous slide">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="arrow arrow-right" aria-label="Next slide">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <div class="carousel-controls">
+            <div class="dot active" aria-label="Slide 1"></div>
+            <div class="dot" aria-label="Slide 2"></div>
+            <div class="dot" aria-label="Slide 3"></div>
+        </div>
+    </section>
+
+    <!-- Products Title Section -->
+    <section class="products-title-section" id="products">
+        <div class="container">
+            <h2 class="section-title">OUR PRODUCTS</h2>
+            <p class="products-subtitle">Discover our range of innovative medical devices designed to improve patient
+                outcomes and support healthcare professionals worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Domain Blocks Section -->
+    <section class="domains-section">
+        <div class="container">
+            <div class="domains-container">
+                <!-- CE Certified Block -->
+                <div class="domain-block">
+                    <div class="domain-image">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="CE Certified Medical Devices">
+                    </div>
+                    <div class="domain-content">
+                        <h3 class="domain-title">CE CERTIFIED CARDIOVASCULAR DEVICES</h3>
+                        <p class="domain-desc">Medical devices meeting European Union safety, health, and environmental
+                            protection requirements.</p>
+                        <a href="/products/ce-certified" class="domain-link">Learn More <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Non-CE Certified Block -->
+                <div class="domain-block">
+                    <div class="domain-image">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Non-CE Certified Medical Devices">
+                    </div>
+                    <div class="domain-content">
+                        <h3 class="domain-title">NON-CE CERTIFIED DRUG DELIVERY DEVICES</h3>
+                        <p class="domain-desc">Devices for markets outside EU with appropriate regional certifications
+                            and compliance standards.</p>
+                        <a href="/products/non-ce-certified" class="domain-link">Learn More <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- OEM Block -->
+                <div class="domain-block">
+                    <div class="domain-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="OEM Medical Devices">
+                    </div>
+                    <div class="domain-content">
+                        <h3 class="domain-title">NON-CE CERTIFIED CARDIOVASCULAR DEVICES</h3>
+                        <p class="domain-desc">Original Equipment Manufacturing with custom specifications and quality
+                            assurance.</p>
+                        <a href="/products/oem" class="domain-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- ODM Block -->
+                <div class="domain-block">
+                    <div class="domain-image">
+                        <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="ODM Medical Devices">
+                    </div>
+                    <div class="domain-content">
+                        <h3 class="domain-title">OEM/ODM CARDIOVASCULAR DEVICES</h3>
+                        <p class="domain-desc">Original Design Manufacturing with innovative solutions and proprietary
+                            designs.</p>
+                        <a href="/products/odm" class="domain-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section - Updated with centered title and orange line -->
+    <section id="about" class="features">
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="feature-title">INTERVENTIONAL CATHETERS & STENT SUPPLY</h3>
+                    <p class="feature-desc">High-quality catheters and stents for various medical procedures with
+                        precision engineering.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">OEM COMPONENT SUPPLY</h3>
+                    <p class="feature-desc">Reliable OEM components for medical device manufacturers with strict quality
+                        control.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="feature-title">MANUFACTURING & COATING CAPABILITIES</h3>
+                    <p class="feature-desc">State-of-the-art manufacturing and specialized coating services for medical
+                        devices.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">SPEED TO MARKET / CUSTOM SOLUTIONS</h3>
+                    <p class="feature-desc">Rapid prototyping and custom medical solutions to meet specific clinical
+                        needs.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLTI Treatment Section - Replaces Impact Section -->
+    <section id="impact" class="clti-section">
+        <div class="container">
+            <div class="clti-container">
+                <div class="clti-image">
+                    <!-- Placeholder for human body diagram -->
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Medical diagram of leg arteries showing CLTI">
+                </div>
+                <div class="clti-content">
+                    <h4 class="clti-subtitle">First Clinical Application</h4>
+                    <h2 class="clti-title">Improve the treatment for CLTI</h2>
+                    
+                    <p class="clti-text">
+                        Chronic Limb-Threatening Ischemia (CLTI) is a severe form of peripheral artery disease that results in significantly reduced blood flow to the extremities, primarily the legs and feet.
+                    </p>
+                    
+                    <p class="clti-text">
+                        Without proper treatment, CLTI can lead to non-healing wounds, gangrene, and ultimately amputation. Early diagnosis and intervention are critical for limb preservation and patient survival.
+                    </p>
+                    
+                    <p class="clti-text">
+                        Our innovative medical devices are specifically designed to address the complex challenges of CLTI treatment, enabling more effective revascularization procedures with improved patient outcomes.
+                    </p>
+                    
+                    <div class="clti-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10000+</div>
+                            <div class="stat-label">people's Lives Impacted</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">CERTIFIED QUALITY PRODUCTS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">IMPACT ORIENTED EXPANSION</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="clti-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section - Restored Original Design -->
+    <section class="vision-section">
+        <div class="container">
+            <div class="vision-container">
+                <h2 class="section-title">Our Vision</h2>
+                <p class="vision-text">At Zon Medical Devices, we envision a world where advanced medical technology is
+                    accessible to all healthcare providers, enabling them to deliver exceptional patient care with
+                    precision, safety, and efficiency.</p>
+                <p class="vision-text">Through continuous innovation and collaboration with medical professionals
+                    worldwide, we strive to develop solutions that not only meet today's clinical needs but anticipate
+                    the challenges of tomorrow's healthcare landscape.</p>
+                <div class="vision-highlight">INNOVATING FOR BETTER HEALTHCARE OUTCOMES</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CONTACT INFO</h3>
+                    <div class="contact-block">
+                        <h4>INDIA</h4>
+                        <div class="footer-contact">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Bangalore,+India"
+                                    target="_blank" class="contact-link">
+                                    Medical Innovation Park, Bangalore, India
+                                </a>
+                            </p>
+                            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:india@zonmedical.com" class="contact-link">
+                                    india@zonmedical.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-block">
+                        <h4>INTERNATIONAL</h4>
+                        <div class="footer-contact">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Eindhoven,+Netherlands"
+                                    target="_blank" class="contact-link">
+                                    Medical Innovation Park, Eindhoven, Netherlands
+                                </a>
+                            </p>
+                            <p><i class="fas fa-phone"></i> +31 40 123 4567</p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@zonmedical.com" class="contact-link">
+                                    info@zonmedical.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>QUICK LINKS</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ url_for('products') }}">Products</a></li>
+                        <li><a href="{{  url_for('contact')}}">Contact</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>OUR LOCATION</h3>
+                    <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Eindhoven,+Netherlands"
+                        target="_blank">
+                        <div class="footer-map">
+                            <!-- Placeholder image - replace with your custom map image -->
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Map showing our location">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>FOLLOW US</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Zon Medical Devices. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" aria-label="Open chatbot">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                Zon Medical Assistant
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button aria-label="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll behavior
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Main Carousel functionality with zoom effect
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevArrow = document.querySelector('.arrow-left');
+        const nextArrow = document.querySelector('.arrow-right');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Adjust index if out of bounds
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            // Show selected slide
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function pauseSlideshow() {
+            clearInterval(slideInterval);
+        }
+
+        // Event listeners for carousel controls
+        prevArrow.addEventListener('click', function () {
+            pauseSlideshow();
+            showSlide(currentSlide - 1);
+            startSlideshow();
+        });
+
+        nextArrow.addEventListener('click', function () {
+            pauseSlideshow();
+            showSlide(currentSlide + 1);
+            startSlideshow();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function () {
+                pauseSlideshow();
+                showSlide(index);
+                startSlideshow();
+            });
+        });
+
+        // Pause slideshow when hovering over carousel
+        const hero = document.querySelector('.hero');
+        hero.addEventListener('mouseenter', pauseSlideshow);
+        hero.addEventListener('mouseleave', startSlideshow);
+
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') {
+                pauseSlideshow();
+                showSlide(currentSlide - 1);
+                startSlideshow();
+            } else if (e.key === 'ArrowRight') {
+                pauseSlideshow();
+                showSlide(currentSlide + 1);
+                startSlideshow();
+            }
+        });
+
+        // Chatbot functionality
+        const chatbotButton = document.querySelector('.chatbot-button');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const chatbotInput = document.querySelector('.chatbot-input input');
+        const chatbotSend = document.querySelector('.chatbot-input button');
+        const chatbotMessages = document.querySelector('.chatbot-messages');
+
+        chatbotButton.addEventListener('click', function () {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        chatbotSend.addEventListener('click', function () {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatbotInput.value = '';
+
+                // Simple bot response
+                setTimeout(function () {
+                    addMessage("Thank you for your message. Our team will get back to you soon.", false);
+                }, 1000);
+            }
+        });
+
+        chatbotInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                chatbotSend.click();
+            }
+        });
+
+        // Initialize the page
+        startSlideshow();
+    </script>
+</body>
+
+</html>

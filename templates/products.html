@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zon Medical Devices - Product Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #e91e63;
+            --dark: #1a202c;
+            --light: #f8fafc;
+            --gray: #718096;
+            --orange: #FF6B35;
+            --orange-dark: #e55a2b;
+            --orange-light: #FFF5F0;
+            --medical-blue: #2A7DE1;
+            --medical-teal: #00A896;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Normal Header Styles - No scroll effects */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--orange);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-actions button {
+            background: none;
+            border: none;
+            color: var(--dark);
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-actions button:hover {
+            color: var(--orange);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Product Catalog Layout */
+        .catalog-section {
+            padding: 40px 0 60px;
+            background-color: var(--light);
+        }
+
+        .catalog-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--orange);
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--orange-light);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: var(--orange-light);
+            color: var(--orange);
+            border-left: 4px solid var(--orange);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* Minimal Banner Styles */
+        .domain-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--dark);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .domain-title {
+            font-size: 1.8rem;
+            /* ↓ Reduced from 2.5rem */
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+
+        .domain-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange);
+        }
+
+        .domain-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-top: 25px;
+        }
+
+        .domain-content {
+            padding: 0 30px 30px;
+        }
+
+        /* Brand Navigation for Non-CE Cardiovascular */
+        .brand-navigation {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .brand-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid var(--orange);
+            border-radius: 5px;
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-btn:hover,
+        .brand-btn.active {
+            background-color: var(--orange);
+            color: white;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            background-color: #f8fafc;
+            transition: transform 0.3s;
+        }
+
+        .product-image-container:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-image-container::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--orange);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-image-container:hover::after {
+            opacity: 1;
+        }
+
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+
+        .product-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .product-features {
+            margin-bottom: 20px;
+        }
+
+        .product-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .product-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .product-features i {
+            color: var(--orange);
+            margin-right: 10px;
+            margin-top: 3px;
+            font-size: 0.9rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--orange);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-align: center;
+            flex: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--orange-dark);
+        }
+
+        .btn,
+        .btn-outline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 45px;
+            padding: 0 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        /* 🔶 Solid orange button */
+        .btn {
+            background-color: #ff7a00;
+            color: #fff;
+            border: none;
+        }
+
+        /* hover effect for solid button */
+        .btn:hover {
+            background-color: #e56b00;
+        }
+
+        /* 🔶 Outline orange button */
+        .btn-outline {
+            background-color: transparent;
+            color: #ff7a00;
+            border: 2px solid #ff7a00;
+        }
+
+        /* hover effect for outline button */
+        .btn-outline:hover {
+            background-color: #ff7a00;
+            color: #fff;
+        }
+
+        /* prevent white flash on click/focus */
+        .btn:active,
+        .btn:focus,
+        .btn-outline:active,
+        .btn-outline:focus {
+            background-color: #e56b00;
+            color: #fff;
+            border-color: #e56b00;
+            outline: none;
+            transform: scale(0.97);
+        }
+
+        /* Normal Footer - No special effects */
+        footer {
+            background-color: #1a202c;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-map {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .footer-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-block {
+            margin-bottom: 25px;
+        }
+
+        .contact-block h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--orange);
+        }
+
+        /* Interactive Contact Links */
+        .contact-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--orange);
+        }
+
+        /* LIGHTBOX STYLES */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lightbox-img-container {
+            position: relative;
+            overflow: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            color: white;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            color: var(--orange);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 1001;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: var(--orange);
+            transform: scale(1.1);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            padding: 10px;
+        }
+
+        /* Zoom Controls */
+        .lightbox-zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .lightbox-zoom-in,
+        .lightbox-zoom-out,
+        .lightbox-reset {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-zoom-in:hover,
+        .lightbox-zoom-out:hover,
+        .lightbox-reset:hover {
+            background: var(--orange);
+            transform: scale(1.1);
+        }
+
+        .lightbox-zoom-level {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            z-index: 1001;
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .chatbot-button:hover {
+            background-color: var(--orange-dark);
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background-color: var(--orange);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .chatbot-input input {
+            flex-grow: 1;
+            border: none;
+            padding: 15px;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background-color: var(--orange-light);
+            color: var(--dark);
+            margin-left: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .catalog-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+
+            .sidebar-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .sidebar-menu li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-menu a {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background-color: white;
+                width: 100%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .brand-navigation {
+                flex-direction: column;
+            }
+
+            .brand-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .domain-banner {
+                padding: 30px 20px;
+            }
+
+            .domain-title {
+                font-size: 2rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lightbox-close {
+                top: -50px;
+                right: 10px;
+            }
+
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-zoom-controls {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .lightbox-zoom-level {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sidebar-menu {
+                flex-direction: column;
+            }
+
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .chatbot-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .chatbot-window {
+                width: 280px;
+                right: -20px;
+            }
+
+            .domain-content {
+                padding: 0 20px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-close {
+                top: -60px;
+                right: 0;
+            }
+
+            .lightbox-caption {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Normal Header - No scroll effects -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <!-- Logo image always visible -->
+                <img src="https://via.placeholder.com/150x40/FF6B35/FFFFFF?text=ZON+MEDICAL"
+                    alt="Zon Medical Devices Logo" class="header-logo">
+                <a href="#" class="logo">Zon Medical Devices</a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="index.html#applications">Applications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Catalog Section -->
+    <section class="catalog-section">
+        <div class="container catalog-container">
+            <!-- Sidebar Navigation -->
+            <div class="sidebar">
+                <h3 class="sidebar-title">PRODUCT CATEGORIES</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#ce-certified" class="active">CE CERTIFIED CARDIOVASCULAR</a></li>
+                    <li><a href="#non-ce-drug">NON-CE DRUG DELIVERY</a></li>
+                    <li><a href="#non-ce-cardiovascular">NON-CE CARDIOVASCULAR</a></li>
+                    <li><a href="#oem-odm">OEM/ODM CARDIOVASCULAR</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- CE Certified Cardiovascular Devices -->
+                <div id="ce-certified" class="domain-content active">
+                    <div class="domain-banner">
+                        <h2 class="domain-title">CE CERTIFIED CARDIOVASCULAR DEVICES</h2>
+                        <p class="domain-subtitle">Medical devices meeting European Union safety, health, and
+                            environmental protection requirements. Our CE certified products ensure the highest
+                            standards
+                            of quality and performance for cardiovascular interventions.</p>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="{{ url_for('static', filename='images/IMAGE.jpg') }}"
+                                    alt="PTCA GUIDING CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">PTCA GUIDING CATHETER</h3>
+                                <p class="product-desc">Precision guiding catheter for Percutaneous Transluminal
+                                    Coronary Angioplasty procedures with enhanced trackability.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Enhanced trackability</li>
+                                        <li><i class="fas fa-check"></i> Optimal backup support</li>
+                                        <li><i class="fas fa-check"></i> Kink-resistant design</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="{{ url_for('download_brochure', filename='resume.pdf') }}" class="btn">
+                                        DOWNLOAD BROCHURE
+                                    </a>
+                                    <a href="{{ url_for('contact') }}" class="btn btn-outline">CONTACT</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="WORKHORSE PTCA GUIDE WIRE" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">WORKHORSE PTCA GUIDE WIRE</h3>
+                                <p class="product-desc">Reliable guide wire with excellent torque response for routine
+                                    PTCA procedures and complex lesions.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Excellent torque response</li>
+                                        <li><i class="fas fa-check"></i> Smooth tip transition</li>
+                                        <li><i class="fas fa-check"></i> Enhanced visibility</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="HYDROPHILIC GUIDEWIRE" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">HYDROPHILIC GUIDEWIRE</h3>
+                                <p class="product-desc">Advanced hydrophilic coating for reduced friction and improved
+                                    navigation through tortuous anatomy.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Hydrophilic coating</li>
+                                        <li><i class="fas fa-check"></i> Reduced friction</li>
+                                        <li><i class="fas fa-check"></i> Enhanced steerability</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="INFLATION DEVICES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">INFLATION DEVICES (30 ATM AND 35 ATM)</h3>
+                                <p class="product-desc">Precision inflation devices for controlled balloon dilation with
+                                    pressure gauges for accurate monitoring.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Pressure gauge included</li>
+                                        <li><i class="fas fa-check"></i> Smooth inflation control</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="2/3 PORT MANIFOLD" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">2/3 PORT MANIFOLD</h3>
+                                <p class="product-desc">High-quality manifold for contrast injection and pressure
+                                    monitoring during angiography procedures.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Multiple port options</li>
+                                        <li><i class="fas fa-check"></i> Pressure monitoring capability</li>
+                                        <li><i class="fas fa-check"></i> Easy to operate</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="Y-CONNECTOR SET" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Y-CONNECTOR SET</h3>
+                                <p class="product-desc">Sterile Y-connector set for efficient fluid management during
+                                    interventional procedures.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                        <li><i class="fas fa-check"></i> Leak-proof connections</li>
+                                        <li><i class="fas fa-check"></i> Compatible with standard devices</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="{{ url_for('static', filename='images/IMAGE.jpg') }}"
+                                    alt="PTCA GUIDING CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">PTCA GUIDING CATHETER</h3>
+                                <p class="product-desc">Precision guiding catheter for Percutaneous Transluminal
+                                    Coronary Angioplasty procedures with enhanced trackability.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Enhanced trackability</li>
+                                        <li><i class="fas fa-check"></i> Optimal backup support</li>
+                                        <li><i class="fas fa-check"></i> Kink-resistant design</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="{{ url_for('download_brochure', filename='resume.pdf') }}" class="btn">
+                                        DOWNLOAD BROCHURE
+                                    </a>
+                                    <a href="{{ url_for('contact') }}" class="btn btn-outline">CONTACT</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="{{ url_for('static', filename='images/IMAGE.jpg') }}"
+                                    alt="PTCA GUIDING CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">PTCA GUIDING CATHETER</h3>
+                                <p class="product-desc">Precision guiding catheter for Percutaneous Transluminal
+                                    Coronary Angioplasty procedures with enhanced trackability.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Enhanced trackability</li>
+                                        <li><i class="fas fa-check"></i> Optimal backup support</li>
+                                        <li><i class="fas fa-check"></i> Kink-resistant design</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="{{ url_for('download_brochure', filename='resume.pdf') }}" class="btn">
+                                        DOWNLOAD BROCHURE
+                                    </a>
+                                    <a href="{{ url_for('contact') }}" class="btn btn-outline">CONTACT</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Non-CE Certified Drug Delivery Devices -->
+                <div id="non-ce-drug" class="domain-content" style="display: none;">
+                    <div class="domain-banner">
+                        <h2 class="domain-title">NON-CE CERTIFIED DRUG DELIVERY DEVICES</h2>
+                        <p class="domain-subtitle">Devices for markets outside EU with appropriate regional
+                            certifications and compliance standards. Our drug delivery devices ensure precise medication
+                            administration for various therapeutic applications.</p>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DRUG-ELUTING PTCA BALLOON DILATATION CATHETER PACLITAXEL"
+                                    class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DRUG-ELUTING PTCA BALLOON DILATATION CATHETER PACLITAXEL</h3>
+                                <p class="product-desc">Advanced drug-eluting balloon catheter for localized delivery of
+                                    Paclitaxel to prevent restenosis.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Paclitaxel coating</li>
+                                        <li><i class="fas fa-check"></i> Uniform drug distribution</li>
+                                        <li><i class="fas fa-check"></i> Reduced restenosis rates</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Non-CE Certified Cardiovascular Devices -->
+                <div id="non-ce-cardiovascular" class="domain-content" style="display: none;">
+                    <div class="domain-banner">
+                        <h2 class="domain-title">NON-CE CERTIFIED CARDIOVASCULAR DEVICES</h2>
+                        <p class="domain-subtitle">Advanced cardiovascular devices designed for specific regional
+                            markets and requirements. Our non-CE certified products maintain the same quality standards
+                            with regional compliance.</p>
+                    </div>
+
+                    <div class="brand-navigation">
+                        <button class="brand-btn active" data-brand="magna">MAGNA</button>
+                        <button class="brand-btn" data-brand="arriva">ARRIVA</button>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Product 1 - MAGNA -->
+                        <div class="product-card" data-brand="magna">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="SEMI-COMPLIANT DILATATION CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">SEMI-COMPLIANT DILATATION CATHETER</h3>
+                                <p class="product-desc">Balloon catheter with balanced compliance for controlled vessel
+                                    dilation and optimal lesion preparation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Balanced compliance</li>
+                                        <li><i class="fas fa-check"></i> Controlled dilation</li>
+                                        <li><i class="fas fa-check"></i> Optimal lesion preparation</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 - MAGNA -->
+                        <div class="product-card" data-brand="magna">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="NON-COMPLIANT DILATATION CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">NON-COMPLIANT DILATATION CATHETER</h3>
+                                <p class="product-desc">High-pressure balloon catheter for calcified lesions with
+                                    minimal expansion at high pressures.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-pressure capability</li>
+                                        <li><i class="fas fa-check"></i> Minimal expansion</li>
+                                        <li><i class="fas fa-check"></i> Calcified lesion treatment</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 - MAGNA -->
+                        <div class="product-card" data-brand="magna">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="BALLOON CATHETER WITH EXTENDED REACH" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">BALLOON CATHETER WITH EXTENDED REACH</h3>
+                                <p class="product-desc">Specialized catheter designed for accessing distal lesions with
+                                    enhanced flexibility.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Extended reach capability</li>
+                                        <li><i class="fas fa-check"></i> Enhanced flexibility</li>
+                                        <li><i class="fas fa-check"></i> Distal lesion access</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 - MAGNA -->
+                        <div class="product-card" data-brand="magna">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="LOW PROFILE DILATATION CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">LOW PROFILE DILATATION CATHETER</h3>
+                                <p class="product-desc">Ultra-low profile design for minimal vessel trauma during
+                                    insertion and dilation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Ultra-low profile</li>
+                                        <li><i class="fas fa-check"></i> Reduced vessel trauma</li>
+                                        <li><i class="fas fa-check"></i> Smooth insertion</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 - MAGNA -->
+                        <div class="product-card" data-brand="magna">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="RAPID EXCHANGE BALLOON CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">RAPID EXCHANGE BALLOON CATHETER</h3>
+                                <p class="product-desc">Quick exchange system for efficient device changes during
+                                    complex procedures.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Quick exchange system</li>
+                                        <li><i class="fas fa-check"></i> Reduced procedure time</li>
+                                        <li><i class="fas fa-check"></i> Enhanced efficiency</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 - MAGNA -->
+                        <div class="product-card" data-brand="magna">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="MULTI-LUMEN GUIDING CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">MULTI-LUMEN GUIDING CATHETER</h3>
+                                <p class="product-desc">Advanced multi-lumen design for complex interventions requiring
+                                    multiple device access.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Multi-lumen design</li>
+                                        <li><i class="fas fa-check"></i> Multiple device access</li>
+                                        <li><i class="fas fa-check"></i> Complex intervention capability</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 1 - ARRIVA -->
+                        <div class="product-card" data-brand="arriva">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="VERY HIGH-PRESSURE BALLOON CATHETER (35ATM)" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">VERY HIGH-PRESSURE BALLOON CATHETER (35ATM)</h3>
+                                <p class="product-desc">Ultra-high pressure balloon catheter for resistant lesions
+                                    requiring maximum dilation force.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> 35 ATM pressure rating</li>
+                                        <li><i class="fas fa-check"></i> Resistant lesion treatment</li>
+                                        <li><i class="fas fa-check"></i> Maximum dilation force</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 - ARRIVA -->
+                        <div class="product-card" data-brand="arriva">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="CURVE BALLOON CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">CURVE BALLOON CATHETER</h3>
+                                <p class="product-desc">Specialized curved balloon catheter for accessing difficult
+                                    anatomy and complex lesions.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Curved tip design</li>
+                                        <li><i class="fas fa-check"></i> Complex lesion access</li>
+                                        <li><i class="fas fa-check"></i> Enhanced navigability</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OEM/ODM Cardiovascular Devices -->
+                <div id="oem-odm" class="domain-content" style="display: none;">
+                    <div class="domain-banner">
+                        <h2 class="domain-title">OEM/ODM CARDIOVASCULAR DEVICES</h2>
+                        <p class="domain-subtitle">Original Equipment Manufacturing and Original Design Manufacturing
+                            with custom specifications and quality assurance. We provide tailored solutions to meet your
+                            specific cardiovascular device requirements.</p>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="CUTTING BALLOON CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">CUTTING BALLOON CATHETER</h3>
+                                <p class="product-desc">Specialized balloon with microsurgical blades for controlled
+                                    lesion scoring and reduced vessel trauma.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Microsurgical blades</li>
+                                        <li><i class="fas fa-check"></i> Controlled lesion scoring</li>
+                                        <li><i class="fas fa-check"></i> Reduced vessel trauma</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="INTRA VASCULAR LITHOTRIPSY" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">INTRA VASCULAR LITHOTRIPSY</h3>
+                                <p class="product-desc">Advanced lithotripsy system for disrupting calcified plaques
+                                    using sonic pressure waves.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Sonic pressure waves</li>
+                                        <li><i class="fas fa-check"></i> Calcified plaque disruption</li>
+                                        <li><i class="fas fa-check"></i> Minimal vessel injury</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="CORONARY STENT SYSTEM" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">CORONARY STENT SYSTEM</h3>
+                                <p class="product-desc">Advanced stent system with precise deployment for coronary
+                                    artery disease treatment.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Precise deployment</li>
+                                        <li><i class="fas fa-check"></i> High radial strength</li>
+                                        <li><i class="fas fa-check"></i> Biocompatible materials</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="EMBOLIC PROTECTION DEVICE" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">EMBOLIC PROTECTION DEVICE</h3>
+                                <p class="product-desc">Advanced protection system to capture and remove embolic debris
+                                    during interventions.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Debris capture system</li>
+                                        <li><i class="fas fa-check"></i> Enhanced patient safety</li>
+                                        <li><i class="fas fa-check"></i> Easy deployment</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="THROMBECTOMY SYSTEM" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">THROMBECTOMY SYSTEM</h3>
+                                <p class="product-desc">Efficient thrombus removal system for acute ischemic stroke and
+                                    peripheral applications.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Efficient thrombus removal</li>
+                                        <li><i class="fas fa-check"></i> Rapid clot aspiration</li>
+                                        <li><i class="fas fa-check"></i> Multiple vessel compatibility</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="ATherectomy Device" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">ATHERECTOMY DEVICE</h3>
+                                <p class="product-desc">Advanced atherectomy system for plaque removal in peripheral and
+                                    coronary arteries.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Precise plaque removal</li>
+                                        <li><i class="fas fa-check"></i> Minimal vessel trauma</li>
+                                        <li><i class="fas fa-check"></i> Enhanced luminal gain</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="VASCULAR CLOSURE DEVICE" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">VASCULAR CLOSURE DEVICE</h3>
+                                <p class="product-desc">Advanced closure system for rapid hemostasis after vascular
+                                    access procedures.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Rapid hemostasis</li>
+                                        <li><i class="fas fa-check"></i> Reduced complication rates</li>
+                                        <li><i class="fas fa-check"></i> Easy deployment</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="INTRAVASCULAR ULTRASOUND" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">INTRAVASCULAR ULTRASOUND</h3>
+                                <p class="product-desc">High-resolution imaging system for precise vessel assessment and
+                                    intervention planning.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-resolution imaging</li>
+                                        <li><i class="fas fa-check"></i> Precise vessel assessment</li>
+                                        <li><i class="fas fa-check"></i> Real-time guidance</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 9 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="FLOATION CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">FLOATION CATHETER</h3>
+                                <p class="product-desc">Specialized catheter for hemodynamic monitoring and critical
+                                    care applications.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Hemodynamic monitoring</li>
+                                        <li><i class="fas fa-check"></i> Critical care applications</li>
+                                        <li><i class="fas fa-check"></i> Balloon-assisted placement</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 10 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="TEMPORARY PACEMAKER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">TEMPORARY PACEMAKER</h3>
+                                <p class="product-desc">Emergency pacing system for temporary cardiac support during
+                                    procedures or acute conditions.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Emergency cardiac support</li>
+                                        <li><i class="fas fa-check"></i> Adjustable pacing parameters</li>
+                                        <li><i class="fas fa-check"></i> Battery-powered operation</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 11 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 12 -->
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="CARDIAC ABLATION CATHETER" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">CARDIAC ABLATION CATHETER</h3>
+                                <p class="product-desc">Precision ablation catheter for treatment of cardiac arrhythmias
+                                    with controlled energy delivery.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Controlled energy delivery</li>
+                                        <li><i class="fas fa-check"></i> Arrhythmia treatment</li>
+                                        <li><i class="fas fa-check"></i> Precise lesion creation</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                    alt="DEFIBRILLATION PADDLES" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">DEFIBRILLATION PADDLES</h3>
+                                <p class="product-desc">High-performance defibrillation paddles for emergency cardiac
+                                    care and resuscitation.</p>
+                                <div class="product-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> High-performance delivery</li>
+                                        <li><i class="fas fa-check"></i> Ergonomic design</li>
+                                        <li><i class="fas fa-check"></i> Sterile packaging</li>
+                                    </ul>
+                                </div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn">DOWNLOAD BROCHURE</a>
+                                    <a href="contact.html" class="btn btn-outline">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Normal Footer - No special effects -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CONTACT INFO</h3>
+                    <div class="contact-block">
+                        <h4>INDIA</h4>
+                        <div class="footer-contact">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Bangalore,+India"
+                                    target="_blank" class="contact-link">
+                                    Medical Innovation Park, Bangalore, India
+                                </a>
+                            </p>
+                            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:india@zonmedical.com" class="contact-link">
+                                    india@zonmedical.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-block">
+                        <h4>INTERNATIONAL</h4>
+                        <div class="footer-contact">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Eindhoven,+Netherlands"
+                                    target="_blank" class="contact-link">
+                                    Medical Innovation Park, Eindhoven, Netherlands
+                                </a>
+                            </p>
+                            <p><i class="fas fa-phone"></i> +31 40 123 4567</p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@zonmedical.com" class="contact-link">
+                                    info@zonmedical.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>QUICK LINKS</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>OUR LOCATION</h3>
+                    <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Eindhoven,+Netherlands"
+                        target="_blank">
+                        <div class="footer-map">
+                            <!-- Placeholder image - replace with your custom map image -->
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Map showing our location">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>FOLLOW US</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Zon Medical Devices. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <div class="lightbox-img-container">
+                <img src="" alt="" class="lightbox-img" id="lightbox-img">
+            </div>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" id="lightbox-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-next" id="lightbox-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="lightbox-zoom-controls">
+            <button class="lightbox-zoom-out" id="lightbox-zoom-out">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button class="lightbox-reset" id="lightbox-reset">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="lightbox-zoom-in" id="lightbox-zoom-in">
+                <i class="fas fa-search-plus"></i>
+            </button>
+        </div>
+        <div class="lightbox-zoom-level" id="lightbox-zoom-level">100%</div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" aria-label="Open chatbot">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                Zon Medical Assistant
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message...">
+                <button aria-label="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Sidebar navigation functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            const domainContents = document.querySelectorAll('.domain-content');
+
+            // Function to show the selected domain content
+            function showDomainContent(domainId) {
+                // Hide all domain contents
+                domainContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                // Show the selected domain content
+                const selectedContent = document.getElementById(domainId);
+                if (selectedContent) {
+                    selectedContent.style.display = 'block';
+                }
+
+                // Update active state in sidebar
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${domainId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Add click event listeners to sidebar links
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const domainId = this.getAttribute('href').substring(1);
+                    showDomainContent(domainId);
+
+                    // Update URL hash without scrolling
+                    history.pushState(null, null, `#${domainId}`);
+                });
+            });
+
+            // Check URL hash on page load
+            const initialHash = window.location.hash.substring(1);
+            if (initialHash && ['ce-certified', 'non-ce-drug', 'non-ce-cardiovascular', 'oem-odm'].includes(initialHash)) {
+                showDomainContent(initialHash);
+            }
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function () {
+                const hash = window.location.hash.substring(1);
+                if (hash && ['ce-certified', 'non-ce-drug', 'non-ce-cardiovascular', 'oem-odm'].includes(hash)) {
+                    showDomainContent(hash);
+                }
+            });
+        });
+
+        // Brand filtering for Non-CE Cardiovascular
+        document.addEventListener('DOMContentLoaded', function () {
+            const brandButtons = document.querySelectorAll('.brand-btn');
+            const productCards = document.querySelectorAll('#non-ce-cardiovascular .product-card');
+
+            brandButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    brandButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const brand = this.getAttribute('data-brand');
+
+                    // Show/hide products based on brand selection
+                    productCards.forEach(card => {
+                        if (brand === 'all' || card.getAttribute('data-brand') === brand) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // LIGHTBOX FUNCTIONALITY
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const lightboxZoomIn = document.getElementById('lightbox-zoom-in');
+        const lightboxZoomOut = document.getElementById('lightbox-zoom-out');
+        const lightboxReset = document.getElementById('lightbox-reset');
+        const lightboxZoomLevel = document.getElementById('lightbox-zoom-level');
+
+        // Collect all product images
+        const productImages = document.querySelectorAll('.product-image');
+        let currentImageIndex = 0;
+        let currentZoom = 1;
+
+        // Add click event to each product image
+        productImages.forEach((image, index) => {
+            image.addEventListener('click', function () {
+                openLightbox(index);
+            });
+        });
+
+        // Open lightbox with specific image
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const imageSrc = productImages[index].getAttribute('src');
+            const imageAlt = productImages[index].getAttribute('alt');
+
+            lightboxImg.setAttribute('src', imageSrc);
+            lightboxCaption.textContent = imageAlt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+            // Reset zoom when opening
+            resetZoom();
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+            resetZoom();
+        }
+
+        // Navigate to previous image
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+            const imageSrc = productImages[currentImageIndex].getAttribute('src');
+            const imageAlt = productImages[currentImageIndex].getAttribute('alt');
+
+            lightboxImg.setAttribute('src', imageSrc);
+            lightboxCaption.textContent = imageAlt;
+            resetZoom();
+        }
+
+        // Navigate to next image
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % productImages.length;
+            const imageSrc = productImages[currentImageIndex].getAttribute('src');
+            const imageAlt = productImages[currentImageIndex].getAttribute('alt');
+
+            lightboxImg.setAttribute('src', imageSrc);
+            lightboxCaption.textContent = imageAlt;
+            resetZoom();
+        }
+
+        // Zoom functionality
+        function zoomIn() {
+            if (currentZoom < 3) {
+                currentZoom += 0.25;
+                updateZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (currentZoom > 0.5) {
+                currentZoom -= 0.25;
+                updateZoom();
+            }
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            updateZoom();
+        }
+
+        function updateZoom() {
+            lightboxImg.style.transform = `scale(${currentZoom})`;
+            lightboxZoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
+        }
+
+        // Event listeners for lightbox controls
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', showPrevImage);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightboxZoomIn.addEventListener('click', zoomIn);
+        lightboxZoomOut.addEventListener('click', zoomOut);
+        lightboxReset.addEventListener('click', resetZoom);
+
+        // Close lightbox when clicking on the background
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function (e) {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === '+') {
+                    zoomIn();
+                } else if (e.key === '-') {
+                    zoomOut();
+                } else if (e.key === '0') {
+                    resetZoom();
+                }
+            }
+        });
+
+        // Chatbot functionality
+        const chatbotButton = document.querySelector('.chatbot-button');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const chatbotInput = document.querySelector('.chatbot-input input');
+        const chatbotSend = document.querySelector('.chatbot-input button');
+        const chatbotMessages = document.querySelector('.chatbot-messages');
+
+        chatbotButton.addEventListener('click', function () {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        chatbotSend.addEventListener('click', function () {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatbotInput.value = '';
+
+                // Simple bot response
+                setTimeout(function () {
+                    addMessage("Thank you for your message. Our team will get back to you soon.", false);
+                }, 1000);
+            }
+        });
+
+        chatbotInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                chatbotSend.click();
+            }
+        });
+
+        // Product brochure download and contact functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function () {
+                if (this.textContent === 'DOWNLOAD BROCHURE') {
+                    const productName = this.parentElement.parentElement.querySelector('.product-title').textContent;
+                    alert(`Thank you for your interest! The brochure for ${productName} will be downloaded.`);
+                } else if (this.textContent === 'CONTACT') {
+                    // Already linked to contact.html, no need for alert
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
