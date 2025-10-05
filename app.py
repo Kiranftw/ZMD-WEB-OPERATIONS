@@ -31,17 +31,16 @@ def product_category(category):
 
 
 
+from flask import send_from_directory, abort
+import os
+
 @app.route("/download/<path:filename>")
 def download_brochure(filename):
-    """
-    Serves any brochure (PDF or other file) from static/brochures directory.
-    Example: /download/cardiology/DCB.pdf
-    """
     return send_from_directory(
-        directory="static/brochure",  # folder inside static
+        directory="static/brochure",
         path=filename,
-        as_attachment=True              # force file download instead of preview
+        as_attachment=True
     )
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=5000)

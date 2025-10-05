@@ -11,7 +11,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add favicon -->
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.ico') }}">
     <style>
         :root {
             --accent: #e91e63;
@@ -1050,12 +1050,13 @@
         <div class="container header-container">
             <div class="logo-container">
                 <!-- Logo image that appears when scrolled -->
-                <img src="/static/image.png" alt="Zon Medical Devices Logo" class="header-logo">
+                <img src="{{ url_for('static', filename='images/image.png') }}" alt="Zon Medical Devices Logo"
+                    class="header-logo">
                 <a href="#" class="logo">Zon Medical Devices</a>
             </div>
 
             <ul class="nav-menu">
-                <li><a href="{{ url_for('main') }}">Main</a></li>
+                <li><a href="{{ url_for('main') }}">Home</a></li>
                 <li><a href="{{ url_for('products') }}">Products</a></li>
                 <li><a href="{{  url_for('contact')}}">Contact</a></li>
                 <li><a href="#blog">Blog</a></li>
@@ -1140,14 +1141,13 @@
                 <!-- CE Certified Block -->
                 <div class="domain-block">
                     <div class="domain-image">
-                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                            alt="CE Certified Medical Devices">
+                        <img src="{{ url_for('static', filename='images/ce.png') }}" alt="CE Certified Medical Devices">
                     </div>
                     <div class="domain-content">
                         <h3 class="domain-title">CE CERTIFIED CARDIOVASCULAR DEVICES</h3>
                         <p class="domain-desc">Medical devices meeting European Union safety, health, and environmental
                             protection requirements.</p>
-                        <a href="/products/ce-certified" class="domain-link">Learn More <i
+                        <a href="{{ url_for('products') }}#ce-certified" class="domain-link">Learn More <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -1155,14 +1155,14 @@
                 <!-- Non-CE Certified Block -->
                 <div class="domain-block">
                     <div class="domain-image">
-                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                        <img src="{{ url_for('static', filename='images/image copy 2.png') }}"
                             alt="Non-CE Certified Medical Devices">
                     </div>
                     <div class="domain-content">
-                        <h3 class="domain-title">NON-CE CERTIFIED DRUG DELIVERY DEVICES</h3>
+                        <h3 class="domain-title">CDSCO CERTIFIED DRUG DELIVERY DEVICES</h3>
                         <p class="domain-desc">Devices for markets outside EU with appropriate regional certifications
                             and compliance standards.</p>
-                        <a href="/products/non-ce-certified" class="domain-link">Learn More <i
+                        <a href="{{ url_for('products') }}#non-ce-drug" class="domain-link">Learn More <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -1170,28 +1170,29 @@
                 <!-- OEM Block -->
                 <div class="domain-block">
                     <div class="domain-image">
-                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                        <img src="{{ url_for('static', filename='images/image copy 2.png') }}"
                             alt="OEM Medical Devices">
                     </div>
                     <div class="domain-content">
-                        <h3 class="domain-title">NON-CE CERTIFIED CARDIOVASCULAR DEVICES</h3>
+                        <h3 class="domain-title">CDSCO CERTIFIED CARDIOVASCULAR DEVICES</h3>
                         <p class="domain-desc">Original Equipment Manufacturing with custom specifications and quality
                             assurance.</p>
-                        <a href="/products/oem" class="domain-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ url_for('products') }}#non-ce-cardiovascular" class="domain-link">Learn More <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- ODM Block -->
                 <div class="domain-block">
                     <div class="domain-image">
-                        <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                            alt="ODM Medical Devices">
+                        <img src="{{ url_for('static', filename='images/OEM.png') }}" alt="ODM Medical Devices">
                     </div>
                     <div class="domain-content">
                         <h3 class="domain-title">OEM/ODM CARDIOVASCULAR DEVICES</h3>
                         <p class="domain-desc">Original Design Manufacturing with innovative solutions and proprietary
                             designs.</p>
-                        <a href="/products/odm" class="domain-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ url_for('products') }}#oem-odm" class="domain-link">Learn More <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1253,25 +1254,32 @@
             <div class="clti-container">
                 <div class="clti-image">
                     <!-- Placeholder for human body diagram -->
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Medical diagram of leg arteries showing CLTI">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        alt="Medical diagram of leg arteries showing CLTI">
                 </div>
                 <div class="clti-content">
-                    <h4 class="clti-subtitle">First Clinical Application</h4>
-                    <h2 class="clti-title">Improve the treatment for CLTI</h2>
-                    
+                    <h4 class="clti-subtitle">Next-Generation Catheter Solutions in Cardiology</h4>
+                    <h2 class="clti-title">Advancing Cardiac Care Through Precision and Innovation</h2>
+
                     <p class="clti-text">
-                        Chronic Limb-Threatening Ischemia (CLTI) is a severe form of peripheral artery disease that results in significantly reduced blood flow to the extremities, primarily the legs and feet.
+                        Heart disease remains one of the leading global health challenges, demanding innovative and
+                        reliable treatment
+                        solutions.
                     </p>
-                    
+
                     <p class="clti-text">
-                        Without proper treatment, CLTI can lead to non-healing wounds, gangrene, and ultimately amputation. Early diagnosis and intervention are critical for limb preservation and patient survival.
+                        At Zon Medical Devices, we design advanced cardiac catheters that enable minimally invasive
+                        procedures with
+                        exceptional control, safety, and precision.
                     </p>
-                    
+
                     <p class="clti-text">
-                        Our innovative medical devices are specifically designed to address the complex challenges of CLTI treatment, enabling more effective revascularization procedures with improved patient outcomes.
+                        Our innovations empower physicians to restore normal heart function efficiently, helping
+                        patients recover faster and
+                        live longer, healthier lives.
                     </p>
-                    
+
+
                     <div class="clti-stats">
                         <div class="stat-item">
                             <div class="stat-number">10000+</div>
@@ -1283,10 +1291,11 @@
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">5+</div>
-                            <div class="stat-label">IMPACT ORIENTED EXPANSION</div>
+                            <div class="stat-label">Countries with Global Presence</div>
                         </div>
+
                     </div>
-                    
+
                     <a href="#" class="clti-btn">Learn More</a>
                 </div>
             </div>
@@ -1316,39 +1325,50 @@
                 <div class="footer-col">
                     <h3>CONTACT INFO</h3>
                     <div class="contact-block">
+                        <h4>INTERNATIONAL</h4>
+                        <div class="footer-contact">
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.app.goo.gl/Pq6cr2g7Yh7PR9vD9" target="_blank"
+                                    class="contact-link">
+                                    Edelbox 4-15 Osloweg 4 9723 BL Groningen
+                                </a>
+                            </p>
+                            <p><i class="fas fa-phone"></i> +31 657877568</p>
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@zonmedicaldevices.com" class="contact-link">
+                                    info@zonmedicaldevices.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-block">
                         <h4>INDIA</h4>
                         <div class="footer-contact">
                             <p>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Bangalore,+India"
                                     target="_blank" class="contact-link">
-                                    Medical Innovation Park, Bangalore, India
+                                    Sri Lakshmi Narasimha Swamy Nilayam
+                                    House No. 2-3-125, Plot No. 36/B, Second Floor,Road No.
+                                    8, Co-oparative Bank Colony, Nagole, Hyderabad-500068
                                 </a>
                             </p>
-                            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Bangalore,+India"
+                                    target="_blank" class="contact-link">
+                                    India Office - Zon Medical Devices.
+                                    P No 66,. SY No: 93 Shop No.2, Boduppal, Medipally
+                                    Medical Dist, Hyderabad Telangana 500039 India
+                                </a>
+                            </p>
+                            <p><i class="fas fa-phone"></i> +91 9866188767</p>
                             <p>
                                 <i class="fas fa-envelope"></i>
                                 <a href="mailto:india@zonmedical.com" class="contact-link">
-                                    india@zonmedical.com
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="contact-block">
-                        <h4>INTERNATIONAL</h4>
-                        <div class="footer-contact">
-                            <p>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <a href="https://maps.google.com/?q=Medical+Innovation+Park,+Eindhoven,+Netherlands"
-                                    target="_blank" class="contact-link">
-                                    Medical Innovation Park, Eindhoven, Netherlands
-                                </a>
-                            </p>
-                            <p><i class="fas fa-phone"></i> +31 40 123 4567</p>
-                            <p>
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:info@zonmedical.com" class="contact-link">
-                                    info@zonmedical.com
+                                    sales@zonmedicaldevices.com
                                 </a>
                             </p>
                         </div>
@@ -1382,7 +1402,8 @@
                     <div class="social-icons">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/zonmedicaldevices/" target="_blank"
+                            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
